@@ -6,6 +6,6 @@ import './assets/main.css'
 
 const app = createApp(App)
 
-app.use(router)
+app.use(router) //Usa as rotas criadas em /src/router/index.js
 
 app.mount('#app')
