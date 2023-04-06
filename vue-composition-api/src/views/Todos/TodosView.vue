@@ -3,7 +3,7 @@
 
     <ul>
         <li v-for="todo in todos" :key="todo.id">
-            {{ todo.name }}
+            {{ todo.title }}
         </li>
     </ul>
 
@@ -11,27 +11,26 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+
+import TodoService from '@/services/todos.service'
 
 export default {
     name: 'Todos',
-    setup() { //Armazena as propriedades
-        const todos = [
-            {id: 1, name: 'tarefa 01', completed: true},
-            {id: 2, name: 'tarefa 02', completed: false},
-            {id: 3, name: 'tarefa 03', completed: true},
-        ]
+    setup() {
+        const todos = ref([])
 
-        //Declarando propriedade como reativa, para os dados inseridos no template serem armazenados na propriedade
-        const name = ref('default value')
+        onMounted(() => {
+            TodoService.getAll()
+                    .then(response => { //Quando da sucesso
+                        console.log(response)
+                        todos.value = response.data.data //recebe retorno da API
+                    })
+                    .catch(error => console.log(error)) //Falha
+        })
 
-        //Alterando valor da propriedade
-        name.value = 'teste 2'
-
-        //Retorna para o template
         return {
             todos,
-            name
         }
     }
 }
