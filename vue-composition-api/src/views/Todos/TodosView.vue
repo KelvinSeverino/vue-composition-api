@@ -10,7 +10,9 @@
 
     <ul>
         <li v-for="todo in todos" :key="todo.id">
-            <todo :todo="todo" @todoDeleted="removeTodoList"/>
+            <todo :todo="todo" 
+            @todoDeleted="removeTodoList"
+            @todoUpdated="todoUpdated"/>
         </li>
     </ul>
 </template>
@@ -45,10 +47,16 @@ export default {
             todos.value.splice(indexRemove, 1) //remove o index informado acima
         }
 
+        const todoUpdated = (todo) => {            
+            const indexUpdate = todos.value.indexOf(todo) //Pega o Index do objeto
+            todos.value[indexUpdate] = todo //Atualiza os dados do Index do objeto
+        }
+
         return {
             loading,
             todos,
             removeTodoList,
+            todoUpdated
         }
     },
 
