@@ -21,5 +21,10 @@ export default class TodoService {
     static async getTodo(id) {
         return axios.get(`/todos/${id}`)
     }
+
+    //Metodo asincrono para deletar tarefa na API
+    static async deleteTodo(id) {
+        return axios.delete(`/todos/${id}`)
+    }
     
 }

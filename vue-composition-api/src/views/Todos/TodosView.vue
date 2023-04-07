@@ -10,11 +10,9 @@
 
     <ul>
         <li v-for="todo in todos" :key="todo.id">
-            <todo :todo="todo"></todo>
+            <todo :todo="todo" @todoDeleted="removeTodoList"/>
         </li>
     </ul>
-
-    <input type="text" v-model="name">
 </template>
 
 <script>
@@ -42,9 +40,15 @@ export default {
                     .finally(() => loading.value = false) //Quando finaliza, idependente de erro ou falha
         })
 
+        const removeTodoList = (todo) => {
+            const indexRemove = todos.value.indexOf(todo) //Pega o Index do objeto
+            todos.value.splice(indexRemove, 1) //remove o index informado acima
+        }
+
         return {
             loading,
             todos,
+            removeTodoList,
         }
     },
 
