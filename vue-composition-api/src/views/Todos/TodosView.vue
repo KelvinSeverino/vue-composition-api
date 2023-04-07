@@ -1,7 +1,7 @@
 <template>
     <h1>
         Lista de Tarefas
-        <router-link :to="{name: 'todos.create'}">+</router-link>
+        <router-link :to="{name: 'todos.create'}"><font-awesome-icon icon="fa-solid fa-circle-plus" /></router-link>
     </h1>
 
     <div v-show="loading">

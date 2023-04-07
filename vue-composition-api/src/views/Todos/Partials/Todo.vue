@@ -3,8 +3,8 @@
     <div>
         <input type="checkbox" :checked="completed" @change="toogleStatus">
         {{ todo.title }} - {{ todo.body }}
-        <router-link :to="{name: 'todos.edit', params: {id: todo.identify}}">Editar</router-link>
-        | <a href="#" @click.prevent="deleteTodo">Deletar</a>
+        <router-link :to="{name: 'todos.edit', params: {id: todo.identify}}"><font-awesome-icon icon="fa-solid fa-pen-square" /> Editar</router-link>
+        | <a href="#" @click.prevent="deleteTodo"><font-awesome-icon icon="fa-solid fa-trash" /> Deletar</a>
     </div>
 </template>
 
