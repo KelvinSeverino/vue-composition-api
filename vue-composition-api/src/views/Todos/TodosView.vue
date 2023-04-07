@@ -10,7 +10,7 @@
 
     <ul>
         <li v-for="todo in todos" :key="todo.id">
-            {{ todo.title }}
+            <todo :todo="todo"></todo>
         </li>
     </ul>
 
@@ -21,6 +21,7 @@
 import { onMounted, ref } from 'vue'
 
 import TodoService from '@/services/todos.service'
+import Todo from './Partials/Todo.vue'
 
 export default {
     name: 'Todos',
@@ -45,6 +46,11 @@ export default {
             loading,
             todos,
         }
+    },
+
+    //Declara componentes a serem utilizados
+    components: {
+        Todo
     }
 }
 </script>
