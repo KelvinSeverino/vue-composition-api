@@ -2,6 +2,7 @@
 <template>
     <div>
         {{ todo.title }} - {{ todo.body }}
+        <router-link :to="{name: 'todos.edit', params: {id: todo.identify}}">Editar</router-link>
     </div>
 </template>
 

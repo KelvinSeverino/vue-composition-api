@@ -12,4 +12,14 @@ export default class TodoService {
         return axios.post('/todos', params)
     }
     
+    //Metodo asincrono para editar tarefa na API
+    static async editTodo(id, params) {
+        return axios.put(`/todos/${id}`, params)
+    }
+
+    //Metodo asincrono para buscar tarefa na API
+    static async getTodo(id) {
+        return axios.get(`/todos/${id}`)
+    }
+    
 }
